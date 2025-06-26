@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construction Defects Cost Tracker</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Define custom CSS variables for the new color palette */
+        :root {
+            --primary-0: #ed4c1e; /* Darkest primary (orange/red) */
+            --primary-1: #f27956; /* Slightly lighter primary */
+            --primary-2: #f6a68f;
+            --primary-3: #f8d2c8;
+            --primary-4: #f8dfd8;
+            --primary-5: #faede9; /* Lightest primary */
+            --secondary-0: #00a1ed; /* Main secondary (blue) */
+            --secondary-1: #1e40ca; /* Darker secondary */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            /* New background gradient for the body */
+            background: linear-gradient(90deg, rgb(249, 247, 246), rgb(196, 232, 247));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Full viewport height */
+            margin: 0;
+            /* Remove padding from body as it's now on the new wrapper */
+            box-sizing: border-box;
+            position: relative; /* Needed for absolute positioning of ::before */
+            overflow: hidden; /* Hide overflow from the ::before if it extends beyond viewport */
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Gradient and mask for the ::before pseudo-element */
+            mask-image: linear-gradient(transparent, black);
+            background: linear-gradient(90deg, rgb(242, 121, 86), rgb(249, 247, 246));
+            z-index: -1; /* Place behind the main content */
+        }
+
+        /* Custom class for the new outer wrapper padding */
+        .outer-wrapper-padding {
+            padding: 131px;
+        }
+    </style>
+</head>
+<body>
+    <!-- New wrapper div with adjusted alignment for its children -->
+    <!-- Removed items-center from here to allow individual alignment -->
+    <div class="outer-wrapper-padding flex flex-col justify-between gap-8 w-full max-w-4xl">
+        <!-- "Construction is broken." now left-aligned with updated styling -->
+        <!-- <h1 class="text-6xl md:text-7xl font-extrabold leading-none text-left tracking-tighter" style="color: #58574b;">
+            Construction<br>is broken.
+        </h1> -->
+
+           <h1 class="text-6xl md:text-7xl font-extrabold leading-none text-left tracking-tighter" style="color: #58574b;">
+            Construction<br>errors have cost
+        </h1> 
+
+
+        <!-- Existing main container with white background and dark text for the title -->
+        <div class="flex flex-col items-center justify-center bg-white p-8 md:p-12 rounded-2xl shadow-xl max-w-2xl w-full text-center border-b-4 border-[var(--primary-0)]">
+            <!-- <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4 tracking-tight" style="color: #58574b; text-align: left;">
+                Construction errors have cost
+            </h1> -->
+
+            <!-- "THIS YEAR" section with subtle grayscale background and text -->
+            <div class="w-full bg-gray-100 rounded-xl p-6 mb-6 shadow-inner">
+                <h2 id="year" class="text-4xl md:text-5xl font-bold text-gray-700 mb-2 leading-tight tabular-nums whitespace-nowrap">
+                    0 SEK
+                </h2>
+                <h3 class="text-lg md:text-xl font-semibold text-gray-600 uppercase tracking-wide">
+                    THIS YEAR
+                </h3>
+            </div>
+
+            <!-- "SINCE YOU OPENED THE PAGE" section with subtle grayscale background and text -->
+            <div class="w-full bg-gray-100 rounded-xl p-6 shadow-inner">
+                <h2 id="session" class="text-4xl md:text-5xl font-bold text-gray-700 mb-2 leading-tight tabular-nums whitespace-nowrap">
+                    0 SEK
+                </h2>
+                <h3 class="text-lg md:text-xl font-semibold text-gray-600 uppercase tracking-wide">
+                    SINCE YOU OPENED THIS PAGE
+                </h3>
+            </div>
+        </div>
+
+        <!-- "Let's fix it." now right-aligned and pushed to the end with updated styling -->
+        <h1 class="text-6xl md:text-7xl font-extrabold leading-none text-right self-end tracking-tighter" style="color: #58574b;">
+            Let's fix it.
+        </h1>
+
+
+        <a href="https://www.aibob.io/" >
+            <svg style="fill: #58574b; position: absolute; bottom: 50px; left: 0; right: 0; margin: auto; height: 40px;" width="297" height="65" viewBox="0 0 297 65" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M151.24 31.63C150.93 31.55 150.89 31.13 151.19 31C156.51 28.81 159.98 24.54 159.98 17.82C159.98 7.72999 152.57 1.29999 139.26 1.29999H117.44C117.26 1.29999 117.11 1.44998 117.11 1.62998V63.48C117.11 63.66 117.26 63.81 117.44 63.81H139.88C154.71 63.81 162.57 57.02 162.57 45.95C162.57 37.43 157.39 33.13 151.24 31.63ZM139.89 56.76H125.22C125.04 56.76 124.89 56.61 124.89 56.43V8.68999C124.89 8.50999 125.04 8.35999 125.22 8.35999H139.62C147.75 8.35999 152.21 12.11 152.21 18.36C152.21 24.61 147.66 28.45 139.62 28.45H131.85C129.93 28.45 128.37 30.01 128.37 31.93C128.37 33.85 129.93 35.41 131.85 35.41H139.89C149.18 35.41 154.63 39.25 154.63 46.31C154.63 52.74 149.54 56.76 139.89 56.76Z"></path><path d="M273.4 31.63C273.09 31.55 273.05 31.13 273.35 31C278.67 28.81 282.14 24.54 282.14 17.82C282.14 7.72999 274.73 1.29999 261.42 1.29999H239.6C239.42 1.29999 239.27 1.44998 239.27 1.62998V63.48C239.27 63.66 239.42 63.81 239.6 63.81H262.04C276.87 63.81 284.73 57.02 284.73 45.95C284.73 37.43 279.55 33.13 273.4 31.63ZM262.05 56.76H247.38C247.2 56.76 247.05 56.61 247.05 56.43V8.68999C247.05 8.50999 247.2 8.35999 247.38 8.35999H261.78C269.91 8.35999 274.37 12.11 274.37 18.36C274.37 24.61 269.82 28.45 261.78 28.45H254.01C252.09 28.45 250.53 30.01 250.53 31.93C250.53 33.85 252.09 35.41 254.01 35.41H262.05C271.34 35.41 276.79 39.25 276.79 46.31C276.79 52.74 271.7 56.76 262.05 56.76Z"></path><path d="M110.14 28.45H75.44C73.518 28.45 71.96 30.008 71.96 31.93V31.94C71.96 33.8619 73.518 35.42 75.44 35.42H110.14C112.062 35.42 113.62 33.8619 113.62 31.94V31.93C113.62 30.008 112.062 28.45 110.14 28.45Z"></path><path d="M232.31 28.45H227.51C225.81 12.06 214.25 0.48999 197.9 0.48999C181.55 0.48999 169.84 12.06 168.26 28.45H163.49C161.57 28.45 160.01 30.01 160.01 31.93C160.01 33.85 161.57 35.41 163.49 35.41H168.2C169.51 52.19 181.33 64.23 197.9 64.07C214.54 63.91 226.43 51.88 227.63 35.41H232.31C234.23 35.41 235.79 33.85 235.79 31.93C235.79 30.01 234.23 28.45 232.31 28.45ZM197.9 7.62999C209.75 7.62999 218.13 16.11 219.56 28.45H176.24C177.67 16.11 186.05 7.62999 197.9 7.62999ZM197.9 56.93C185.83 56.93 177.36 48.13 176.17 35.41H219.63C218.44 48.12 209.97 56.93 197.9 56.93Z"></path><path d="M68.15 1.29999H61.04C60.8577 1.29999 60.71 1.44773 60.71 1.62998V63.49C60.71 63.6722 60.8577 63.82 61.04 63.82H68.15C68.3322 63.82 68.48 63.6722 68.48 63.49V1.62998C68.48 1.44773 68.3322 1.29999 68.15 1.29999Z"></path><path d="M33.7 1.50999C33.65 1.37999 33.53 1.29999 33.39 1.29999H24.65C24.51 1.29999 24.39 1.37999 24.34 1.50999L0.749992 63.36C0.669992 63.58 0.82999 63.81 1.05999 63.81H8.38999C8.52999 63.81 8.64999 63.73 8.69999 63.6L19.15 35.63C19.2 35.5 19.32 35.41 19.46 35.41H38.19C38.33 35.41 38.45 35.5 38.5 35.63L48.99 63.6C49.04 63.73 49.16 63.81 49.3 63.81H56.9C57.13 63.81 57.29 63.58 57.21 63.36L33.71 1.50999H33.7ZM35.32 28.45H22.3C22.07 28.45 21.91 28.22 21.99 28L28.48 10.61C28.59 10.32 28.99 10.32 29.1 10.61L35.62 28C35.7 28.22 35.54 28.45 35.31 28.45H35.32Z"></path><path d="M151.24 31.63C150.93 31.55 150.89 31.13 151.19 31C156.51 28.81 159.98 24.54 159.98 17.82C159.98 7.72999 152.57 1.29999 139.26 1.29999H117.44C117.26 1.29999 117.11 1.44998 117.11 1.62998V63.48C117.11 63.66 117.26 63.81 117.44 63.81H139.88C154.71 63.81 162.57 57.02 162.57 45.95C162.57 37.43 157.39 33.13 151.24 31.63ZM139.89 56.76H125.22C125.04 56.76 124.89 56.61 124.89 56.43V8.68999C124.89 8.50999 125.04 8.35999 125.22 8.35999H139.62C147.75 8.35999 152.21 12.11 152.21 18.36C152.21 24.61 147.66 28.45 139.62 28.45H131.85C129.93 28.45 128.37 30.01 128.37 31.93C128.37 33.85 129.93 35.41 131.85 35.41H139.89C149.18 35.41 154.63 39.25 154.63 46.31C154.63 52.74 149.54 56.76 139.89 56.76Z"></path><path d="M273.4 31.63C273.09 31.55 273.05 31.13 273.35 31C278.67 28.81 282.14 24.54 282.14 17.82C282.14 7.72999 274.73 1.29999 261.42 1.29999H239.6C239.42 1.29999 239.27 1.44998 239.27 1.62998V63.48C239.27 63.66 239.42 63.81 239.6 63.81H262.04C276.87 63.81 284.73 57.02 284.73 45.95C284.73 37.43 279.55 33.13 273.4 31.63ZM262.05 56.76H247.38C247.2 56.76 247.05 56.61 247.05 56.43V8.68999C247.05 8.50999 247.2 8.35999 247.38 8.35999H261.78C269.91 8.35999 274.37 12.11 274.37 18.36C274.37 24.61 269.82 28.45 261.78 28.45H254.01C252.09 28.45 250.53 30.01 250.53 31.93C250.53 33.85 252.09 35.41 254.01 35.41H262.05C271.34 35.41 276.79 39.25 276.79 46.31C276.79 52.74 271.7 56.76 262.05 56.76Z"></path><path d="M110.14 28.45H75.44C73.518 28.45 71.96 30.008 71.96 31.93V31.94C71.96 33.8619 73.518 35.42 75.44 35.42H110.14C112.062 35.42 113.62 33.8619 113.62 31.94V31.93C113.62 30.008 112.062 28.45 110.14 28.45Z"></path><path d="M232.31 28.45H227.51C225.81 12.06 214.25 0.48999 197.9 0.48999C181.55 0.48999 169.84 12.06 168.26 28.45H163.49C161.57 28.45 160.01 30.01 160.01 31.93C160.01 33.85 161.57 35.41 163.49 35.41H168.2C169.51 52.19 181.33 64.23 197.9 64.07C214.54 63.91 226.43 51.88 227.63 35.41H232.31C234.23 35.41 235.79 33.85 235.79 31.93C235.79 30.01 234.23 28.45 232.31 28.45ZM197.9 7.62999C209.75 7.62999 218.13 16.11 219.56 28.45H176.24C177.67 16.11 186.05 7.62999 197.9 7.62999ZM197.9 56.93C185.83 56.93 177.36 48.13 176.17 35.41H219.63C218.44 48.12 209.97 56.93 197.9 56.93Z"></path><path d="M68.15 1.29999H61.04C60.8577 1.29999 60.71 1.44773 60.71 1.62998V63.49C60.71 63.6722 60.8577 63.82 61.04 63.82H68.15C68.3322 63.82 68.48 63.6722 68.48 63.49V1.62998C68.48 1.44773 68.3322 1.29999 68.15 1.29999Z"></path><path d="M33.7 1.50999C33.65 1.37999 33.53 1.29999 33.39 1.29999H24.65C24.51 1.29999 24.39 1.37999 24.34 1.50999L0.749992 63.36C0.669992 63.58 0.82999 63.81 1.05999 63.81H8.38999C8.52999 63.81 8.64999 63.73 8.69999 63.6L19.15 35.63C19.2 35.5 19.32 35.41 19.46 35.41H38.19C38.33 35.41 38.45 35.5 38.5 35.63L48.99 63.6C49.04 63.73 49.16 63.81 49.3 63.81H56.9C57.13 63.81 57.29 63.58 57.21 63.36L33.71 1.50999H33.7ZM35.32 28.45H22.3C22.07 28.45 21.91 28.22 21.99 28L28.48 10.61C28.59 10.32 28.99 10.32 29.1 10.61L35.62 28C35.7 28.22 35.54 28.45 35.31 28.45H35.32Z"></path><path d="M290.19 0.48999C293.56 0.48999 296.11 3.00999 296.11 6.31999C296.11 9.62999 293.56 12.12 290.19 12.12C286.82 12.12 284.3 9.62999 284.3 6.34999C284.3 3.06999 286.85 0.48999 290.19 0.48999ZM290.19 1.62C287.53 1.62 285.58 3.59999 285.58 6.34999C285.58 9.09999 287.53 10.99 290.19 10.99C292.85 10.99 294.83 9.00999 294.83 6.31999C294.83 3.62999 292.88 1.62 290.19 1.62ZM287.99 3.08999H290.45C291.98 3.08999 292.94 3.90999 292.94 5.12999C292.94 6.05999 292.37 6.73999 291.44 6.99999L292.97 9.55H291.58L290.22 7.25999H289.23V9.55H287.98V3.09999L287.99 3.08999ZM289.23 4.13999V6.20999H290.39C291.1 6.20999 291.64 5.80999 291.64 5.12999C291.64 4.44999 291.13 4.13999 290.39 4.13999H289.23Z"></path></svg>
+        </a>
+
+    </div>
+
+    <script>
+        const totalsum = 111_000_000_000;     
+        const secondsInAYear = 60 * 60 * 24 * 365;        
+        const pricePerSecond = totalsum / secondsInAYear;
+        const now = new Date();
+        const currentYear = now.getFullYear();
+        const newYear = new Date(currentYear, 0, 1);
+        const differenceInMilliseconds = now.getTime() - newYear.getTime();
+        const currentSeconds = Math.floor(differenceInMilliseconds / 1000);
+        const startAmount = currentSeconds * pricePerSecond;
+
+        let sessionTicker = 0;
+
+        const yearDiv = document.getElementById("year");
+        const sessionDiv = document.getElementById("session");
+
+        const interMs = 10; 
+
+ 
+        function formatNumberWithSpacing(number) {
+           
+            return new Intl.NumberFormat('sv-SE').format(number);
+        }
+
+        
+        setInterval(() => {
+            sessionTicker += pricePerSecond * (interMs / 1000);
+            sessionDiv.innerText = `${formatNumberWithSpacing(Math.round(sessionTicker))} SEK`;
+            yearDiv.innerText = `${formatNumberWithSpacing(Math.round(startAmount + sessionTicker))} SEK`;
+        }, interMs); 
+    </script>
+</body>
+</html>
